@@ -9,7 +9,7 @@ func _ready():
 	add_to_group("player")
 
 func _physics_process(_delta: float) -> void:
-	# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/2
+	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/2
 	# Add player movement
 	#
 	# Get the input direction and handle the movement/deceleration.
@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-	# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/1
+	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/1
 	# Make player Aim at Mouse 
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
