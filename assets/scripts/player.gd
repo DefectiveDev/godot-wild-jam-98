@@ -23,3 +23,9 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+
+	# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/1
+	# Make player Aim at Mouse 
+	look_at(get_global_mouse_position())
+	rotation_degrees += 90
