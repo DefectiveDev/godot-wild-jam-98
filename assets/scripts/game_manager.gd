@@ -1,6 +1,6 @@
 extends Node
 
-# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/5
+# https://github.com/DefectiveDev/godot-wild-jam-98/issues/5
 # Create game manager to adjust settings and access player globally
 class_name GameManagerSingleton
 
