@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
+class_name Player
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+func _ready():
+	add_to_group("player")
 
 func _physics_process(_delta: float) -> void:
 	# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/2
