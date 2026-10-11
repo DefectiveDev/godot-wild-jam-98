@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cacmjsr4im1k1"]
 
-[ext_resource type="Texture2D" uid="uid://rjnjkhy2p2mq" path="res://assets/Graphics/tilesets/graveyard act.png" id="1_a0dt8"]
-[ext_resource type="Texture2D" uid="uid://cbipghl1p8e" path="res://assets/Graphics/tilesets/grave act 2.png" id="2_4hjbm"]
+[ext_resource type="Texture2D" uid="uid://rjnjkhy2p2mq" path="res://assets/graphics/tilesets/graveyard act.png" id="1_a0dt8"]
+[ext_resource type="Texture2D" uid="uid://cbipghl1p8e" path="res://assets/graphics/tilesets/grave act 2.png" id="2_4hjbm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lgq1i"]
 texture = ExtResource("1_a0dt8")
