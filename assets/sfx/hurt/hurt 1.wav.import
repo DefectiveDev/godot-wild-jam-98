@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d0spg1qfld3p"
-path="res://.godot/imported/hurt 2.wav-5a97f4274b25630a93a389b23f8593d3.sample"
+uid="uid://cvrmwosd4tvmk"
+path="res://.godot/imported/hurt 1.wav-2a71e69f6cd280b1675019fd636a8481.sample"
 
 [deps]
 
-source_file="res://assets/SFX/hurt/hurt 2.wav"
-dest_files=["res://.godot/imported/hurt 2.wav-5a97f4274b25630a93a389b23f8593d3.sample"]
+source_file="res://assets/sfx/hurt/hurt 1.wav"
+dest_files=["res://.godot/imported/hurt 1.wav-2a71e69f6cd280b1675019fd636a8481.sample"]
 
 [params]
 

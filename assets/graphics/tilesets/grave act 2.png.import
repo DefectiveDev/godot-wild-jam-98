@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rjnjkhy2p2mq"
-path="res://.godot/imported/graveyard act.png-a54edf81b91c061c3c063922f86da884.ctex"
+uid="uid://cbipghl1p8e"
+path="res://.godot/imported/grave act 2.png-082684e755f18a5766ffd13d47db68b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Graphics/tilesets/graveyard act.png"
-dest_files=["res://.godot/imported/graveyard act.png-a54edf81b91c061c3c063922f86da884.ctex"]
+source_file="res://assets/graphics/tilesets/grave act 2.png"
+dest_files=["res://.godot/imported/grave act 2.png-082684e755f18a5766ffd13d47db68b4.ctex"]
 
 [params]
 
