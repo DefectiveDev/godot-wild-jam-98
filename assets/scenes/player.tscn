@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://qhhlavl3g1x8"]
 
-[ext_resource type="Texture2D" uid="uid://cf68o0pp8rbgl" path="res://assets/placeholder/triangle-player.png" id="1_rwm0n"]
+[ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/placeholder/triangle-player.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://bpu2jhvkqpq1c" path="res://assets/scripts/player.gd" id="1_s027a"]
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489]
+[node name="Player" type="CharacterBody2D" unique_id=255108489 groups=["player"]]
 motion_mode = 1
 platform_on_leave = 2
 platform_wall_layers = 64
