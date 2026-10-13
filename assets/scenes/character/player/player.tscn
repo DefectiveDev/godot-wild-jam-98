@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://bpu2jhvkqpq1c" path="res://assets/scenes/character/player/player.gd" id="1_s027a"]
 [ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/scenes/character/player/placeholder/triangle-player.png" id="3_xo733"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s027a"]
-size = Vector2(46, 47)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8sknh"]
+radius = 19.31968
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
+radius = 19.104973
 
 [node name="Player" type="CharacterBody2D" unique_id=255108489 groups=["player"]]
 collision_layer = 0
@@ -18,8 +21,8 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1208617105]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_s027a")
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_8sknh")
 
 [node name="Rotation" type="Node2D" parent="." unique_id=2126839320]
 unique_name_in_owner = true
@@ -27,9 +30,29 @@ unique_name_in_owner = true
 [node name="TrianglePlayer" type="Sprite2D" parent="Rotation" unique_id=1603647954]
 texture = ExtResource("3_xo733")
 
+[node name="flash beam sprite" type="Sprite2D" parent="Visuals/TrianglePlayer" unique_id=701091375]
+position = Vector2(-2, -125.263)
+scale = Vector2(0.95058924, 0.99784285)
+texture = ExtResource("4_0gfpk")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(682.37305, 162.51666, 251.65637, 245.37875)
+script = ExtResource("5_0hrit")
+
+[node name="flash beam" type="Area2D" parent="Visuals/TrianglePlayer" unique_id=1449900755]
+self_modulate = Color(0.039215688, 1, 1, 1)
+z_index = 5
+script = ExtResource("3_8sknh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Visuals/TrianglePlayer/flash beam" unique_id=1411233279]
+position = Vector2(4.7683716e-07, 9)
+scale = Vector2(1.7727271, 1.7395835)
+build_mode = 1
+polygon = PackedVector2Array(0, -14, -55, -134, 26.039917, -134, 55, -134)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788597098]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_s027a")
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_0gfpk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=824747456]
 enabled = false
