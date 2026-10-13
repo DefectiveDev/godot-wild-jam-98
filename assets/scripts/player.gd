@@ -5,7 +5,9 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-func _ready():
+@onready var visual = $Visuals
+
+func _init():
 	add_to_group("player")
 
 func _physics_process(_delta: float) -> void:
@@ -31,5 +33,5 @@ func _physics_process(_delta: float) -> void:
 
 	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/1
 	# Make player Aim at Mouse 
-	look_at(get_global_mouse_position())
-	rotation_degrees += 90
+	visual.look_at(get_global_mouse_position())
+	visual.rotation_degrees += 90
