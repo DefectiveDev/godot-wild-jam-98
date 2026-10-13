@@ -2,8 +2,18 @@ extends CharacterBody2D
 
 class_name Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export
+var max_health: int = 100
+
+@onready var current_health: int = max_health
+
+@export
+var damage_per_second = 10
+
+@export
+var max_speed = 300.0
+
+@onready var current_speed = max_speed
 
 @onready var visual = $Visuals
 
@@ -18,15 +28,15 @@ func _physics_process(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var directionX := Input.get_axis("ui_left", "ui_right")
 	if directionX:
-		velocity.x = directionX * SPEED
+		velocity.x = directionX * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 	var directionY := Input.get_axis("ui_up", "ui_down")
 	if directionY:
-		velocity.y = directionY * SPEED
+		velocity.y = directionY * current_speed
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, current_speed)
 
 	move_and_slide()
 

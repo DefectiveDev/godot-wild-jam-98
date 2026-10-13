@@ -9,7 +9,7 @@ static var GAME_MANAGER: GameManagerSingleton:
 		if not _GAME_MANAGER:
 			var tree = Engine.get_main_loop() as SceneTree
 			if tree:
-				var node = load("res://assets/scenes/game_manager.tscn").instantiate()
+				var node = load("res://assets/scenes/game_manager/game_manager.tscn").instantiate()
 				tree.current_scene.add_child(node)
 				_GAME_MANAGER = node
 		return _GAME_MANAGER
@@ -40,6 +40,3 @@ var _player: Player = null:
 func _init():
 	if not _GAME_MANAGER and _GAME_MANAGER != self:
 		_GAME_MANAGER = self
-
-func _ready():
-	_player = get_tree().get_first_node_in_group("player")
