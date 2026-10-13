@@ -9,7 +9,7 @@ func _init():
 	max_slides = 1
 
 func _physics_process(_delta: float) -> void:
-	# TODO: https://github.com/DefectiveDev/godot-wild-jam-98/issues/4
+	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/4
 	# Have the enemy follow the player
 
 	if not player:
