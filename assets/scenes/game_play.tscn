@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpiu2re6mhgh0"]
 
-[ext_resource type="PackedScene" uid="uid://qhhlavl3g1x8" path="res://assets/scenes/player/player.tscn" id="1_160j0"]
-[ext_resource type="PackedScene" uid="uid://cxnxj34nmpsb1" path="res://assets/scenes/enemy/enemy.tscn" id="2_l5du7"]
+[ext_resource type="PackedScene" uid="uid://qhhlavl3g1x8" path="res://assets/scenes/character/player/player.tscn" id="1_160j0"]
+[ext_resource type="PackedScene" uid="uid://cxnxj34nmpsb1" path="res://assets/scenes/character/enemy/enemy.tscn" id="2_l5du7"]
 
 [node name="GamePlay" type="Node2D" unique_id=1881000265]
 
