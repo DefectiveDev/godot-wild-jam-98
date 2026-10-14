@@ -3,6 +3,9 @@ class_name Player extends DefaultCharacter2D
 
 @onready var rotation_child_node = $Rotation
 
+var color_wheel= [Color(1,1,1),Color(1, 0, 0),Color(1, 0, 1),Color(0, 0, 1),Color(0, 1, 0),Color(1, 1, 0),Color(1,0.5,0)]
+var current_color = color_wheel[0]
+
 func _init():
 	add_to_group("player")
 
