@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://qhhlavl3g1x8"]
 
-[ext_resource type="Script" uid="uid://bpu2jhvkqpq1c" path="res://assets/scenes/player/player.gd" id="1_s027a"]
-[ext_resource type="Script" uid="uid://cnrj48y2cu45a" path="res://assets/scenes/player/on_hit_static_body.gd" id="2_xo733"]
-[ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/scenes/player/placeholder/triangle-player.png" id="3_xo733"]
+[ext_resource type="Script" uid="uid://bpu2jhvkqpq1c" path="res://assets/scenes/character/player/player.gd" id="1_s027a"]
+[ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/scenes/character/player/placeholder/triangle-player.png" id="3_xo733"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s027a"]
 size = Vector2(46, 47)
@@ -17,16 +16,15 @@ script = ExtResource("1_s027a")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=59353306]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("2_xo733")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1208617105]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_s027a")
 
-[node name="Visuals" type="Node2D" parent="." unique_id=2126839320]
+[node name="Rotation" type="Node2D" parent="." unique_id=2126839320]
 unique_name_in_owner = true
 
-[node name="TrianglePlayer" type="Sprite2D" parent="Visuals" unique_id=1603647954]
+[node name="TrianglePlayer" type="Sprite2D" parent="Rotation" unique_id=1603647954]
 texture = ExtResource("3_xo733")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=788597098]
@@ -34,4 +32,5 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_s027a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=824747456]
+enabled = false
 limit_enabled = false

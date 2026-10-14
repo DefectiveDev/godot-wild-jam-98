@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cxnxj34nmpsb1"]
+
+[ext_resource type="Script" uid="uid://bu4k3ivab7fy1" path="res://assets/scenes/character/enemy/enemy.gd" id="1_kbpvo"]
+[ext_resource type="Texture2D" uid="uid://bv88auynwqo8s" path="res://assets/scenes/character/enemy/placeholder/enemy.png" id="1_kvq5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf3xv"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1119381428]
+collision_layer = 4
+collision_mask = 2
+collision_priority = 0.1
+motion_mode = 1
+script = ExtResource("1_kbpvo")
+max_speed = 2.5
+
+[node name="Enemy" type="Sprite2D" parent="." unique_id=131191219]
+texture = ExtResource("1_kvq5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=528549607]
+shape = SubResource("RectangleShape2D_lf3xv")
+
+[node name="HurtCooldownTimer" type="Timer" parent="." unique_id=1705796712]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=943389919]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="HurtCooldownTimer" to="." method="_on_hurt_cooldown_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
