@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blnookqpcpfxl"
-path="res://.godot/imported/triangle-player.png-40930b9725b7a435f6b2b79fe1aadd60.ctex"
+path="res://.godot/imported/triangle-player.png-8d0a8d7039c7a6d273359d9a950d1ce9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/player/placeholder/triangle-player.png"
-dest_files=["res://.godot/imported/triangle-player.png-40930b9725b7a435f6b2b79fe1aadd60.ctex"]
+source_file="res://assets/scenes/character/player/placeholder/triangle-player.png"
+dest_files=["res://.godot/imported/triangle-player.png-8d0a8d7039c7a6d273359d9a950d1ce9.ctex"]
 
 [params]
 
