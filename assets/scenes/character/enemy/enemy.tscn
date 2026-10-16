@@ -2,17 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bu4k3ivab7fy1" path="res://assets/scenes/character/enemy/enemy.gd" id="1_kbpvo"]
 [ext_resource type="Texture2D" uid="uid://bv88auynwqo8s" path="res://assets/scenes/character/enemy/placeholder/enemy.png" id="1_kvq5h"]
+[ext_resource type="Script" uid="uid://dfvg5sxmf2inw" path="res://assets/scenes/character/health_component.gd" id="3_ryw18"]
+[ext_resource type="Script" uid="uid://dpsrellmms07y" path="res://assets/scenes/character/attack_component.gd" id="4_tiq60"]
+[ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="5_8avt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf3xv"]
 size = Vector2(32, 32)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1119381428]
+[node name="Enemy" type="CharacterBody2D" unique_id=1119381428 node_paths=PackedStringArray("health_component", "attack_component", "movement_component_2d")]
 collision_layer = 4
 collision_mask = 2
 collision_priority = 0.1
 motion_mode = 1
 script = ExtResource("1_kbpvo")
-max_speed = 2.5
+health_component = NodePath("HealthComponent")
+attack_component = NodePath("AttackComponent")
+movement_component_2d = NodePath("MovementComponent2D")
 
 [node name="Enemy" type="Sprite2D" parent="." unique_id=131191219]
 texture = ExtResource("1_kvq5h")
@@ -20,14 +25,20 @@ texture = ExtResource("1_kvq5h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=528549607]
 shape = SubResource("RectangleShape2D_lf3xv")
 
-[node name="HurtCooldownTimer" type="Timer" parent="." unique_id=1705796712]
-unique_name_in_owner = true
-one_shot = true
+[node name="HealthComponent" type="Node" parent="." unique_id=1723014206]
+script = ExtResource("3_ryw18")
+metadata/_custom_type_script = "uid://dfvg5sxmf2inw"
 
-[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=943389919]
-unique_name_in_owner = true
+[node name="AttackComponent" type="Node" parent="." unique_id=2141599944 node_paths=PackedStringArray("attack_cooldown_timer")]
+script = ExtResource("4_tiq60")
+attack_cooldown_timer = NodePath("AttackCooldownTimer")
+metadata/_custom_type_script = "uid://dpsrellmms07y"
+
+[node name="AttackCooldownTimer" type="Timer" parent="AttackComponent" unique_id=2038533553]
 wait_time = 0.25
 one_shot = true
 
-[connection signal="timeout" from="HurtCooldownTimer" to="." method="_on_hurt_cooldown_timer_timeout"]
-[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[node name="MovementComponent2D" type="Node" parent="." unique_id=824866318]
+script = ExtResource("5_8avt7")
+max_speed = 150.0
+metadata/_custom_type_script = "uid://johirolxitn5"
