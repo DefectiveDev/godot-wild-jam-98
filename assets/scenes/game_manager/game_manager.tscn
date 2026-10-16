@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://3co2iwn6wib4"]
 
-[ext_resource type="Script" uid="uid://biutdlcdto3b5" path="res://assets/scripts/game_manager.gd" id="1_cffl0"]
+[ext_resource type="Script" uid="uid://biutdlcdto3b5" path="res://assets/scenes/game_manager/game_manager.gd" id="1_cffl0"]
+[ext_resource type="Script" uid="uid://bes24vxa3hkbb" path="res://assets/scenes/game_manager/color_and_shapes/color_and_shape_resource.gd" id="2_0k7rf"]
+[ext_resource type="Resource" uid="uid://cv6t6mwiskrxu" path="res://assets/scenes/game_manager/color_and_shapes/triangle.tres" id="3_5bq8w"]
 
 [node name="GameManager" type="Node" unique_id=35938606]
 script = ExtResource("1_cffl0")
+colors_and_shapes = Array[ExtResource("2_0k7rf")]([ExtResource("3_5bq8w")])
+
+[node name="EnemySpawner" type="Node" parent="." unique_id=901823606]

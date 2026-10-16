@@ -3,42 +3,30 @@ class_name Player extends DefaultCharacter2D
 
 @onready var rotation_child_node = $Rotation
 
-var color_wheel= [Color(1,1,1),Color(1, 0, 0),Color(1, 0, 1),Color(0, 0, 1),Color(0, 1, 0),Color(1, 1, 0),Color(1,0.5,0)]
-var current_color = color_wheel[0]
+@export
+var input_component: InputComponent
 
-func _init():
+
+func _init() -> void:
 	add_to_group("player")
 
-func on_death() -> void:
-	super.on_death()
-	print("Player has died")
-
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/2
 	# Add player movement
 	#
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction: Vector2 = Vector2(
-		Input.get_axis("ui_left", "ui_right"),
-		Input.get_axis("ui_up", "ui_down")
-		).normalized()
 	
+	input_component.update()
+	var move_direction = input_component.get_move_direction()
+	movement_component_2d.update(delta, self, move_direction)
 
-	if direction.x:
-		velocity.x = direction.x * current_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
+func _attack(overlapping_bodies: Array[Node2D], attack_component_self: AttackComponent):
+	for body in overlapping_bodies:
+		if body is Enemy:
+			body.health_component.set_health(
+				body.health_component.get_health() - ceili(attack_component_self.damage_per_second * attack_component_self.attack_cooldown_timer.wait_time)
+				)
 
-	if direction.y:
-		velocity.y = direction.y * current_speed
-	else:
-		velocity.y = move_toward(velocity.y, 0, current_speed)
-
-	move_and_slide()
-
-
-	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/1
-	# Make player Aim at Mouse 
-	rotation_child_node.look_at(get_global_mouse_position())
-	rotation_child_node.rotation_degrees += 90
+func _on_flash_beam_area_2d_has_overlapping_bodies_physics(overlapping_bodies: Array[Node2D]) -> void:
+	attack_component.attack(_attack, [overlapping_bodies, attack_component])

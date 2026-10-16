@@ -10,7 +10,7 @@ static var GAME_MANAGER: GameManagerSingleton:
 			var tree = Engine.get_main_loop() as SceneTree
 			if tree:
 				var node = load("res://assets/scenes/game_manager/game_manager.tscn").instantiate()
-				tree.current_scene.add_child(node)
+				tree.current_scene.add_child.call_deferred(node)
 				_GAME_MANAGER = node
 		return _GAME_MANAGER
 
@@ -33,9 +33,12 @@ var _player: Player = null:
 		_player = v
 	get:
 		if not _player:
-			_player = get_tree().get_first_node_in_group("player")
+			var tree = Engine.get_main_loop() as SceneTree
+			_player = tree.get_first_node_in_group("player")
 		assert(_player, "Player script is being accessed but there is no player node in group \"player\". Check if you have the Player in your current scene.")
 		return _player
+
+@export var colors_and_shapes: Array[ColorAndShape]
 
 func _init():
 	if not _GAME_MANAGER and _GAME_MANAGER != self:

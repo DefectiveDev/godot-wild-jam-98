@@ -1,49 +1,30 @@
-extends DefaultCharacter2D
+class_name Enemy extends DefaultCharacter2D
 
 
-var player: Player = null
-
-var _hurt_cooldown_reached = true
-
-@onready var _hurt_cooldown_timer: Timer = $HurtCooldownTimer
-
-var _attack_cooldown_reached = true
-
-@onready var _attack_cooldown_timer: Timer = $AttackCooldownTimer
+@onready var player: Player = GameManagerSingleton.GAME_MANAGER.player
 
 
-func attack(target: DefaultCharacter2D):
-	_attack_cooldown_reached = false
-	_attack_cooldown_timer.start()
-	target.current_health -= ceil(damage_per_second * _attack_cooldown_timer.wait_time)
+func _attack(character_body_2d: CharacterBody2D, attack_component_self: AttackComponent):
+	var collision = character_body_2d.get_last_slide_collision()
+	
+	if collision:
+		var node = (collision.get_collider() as Node)
+		var parent_node = node.get_parent()
+		if parent_node is Player:
+			print("enemy attacking player, Player health: " + str(parent_node.health_component.get_health()))
+			parent_node.health_component.set_health(
+				parent_node.health_component.get_health() - ceili(attack_component_self.damage_per_second * attack_component_self.attack_cooldown_timer.wait_time)
+				)
 
 func _init():
 	max_slides = 1
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/4
 	# Have the enemy follow the player
 
-	if not player:
-		player = GameManagerSingleton.GAME_MANAGER.player
-	var direction := position.direction_to(player.position)
-	velocity = direction * current_speed
-	
-	var collision = move_and_collide(velocity, false)
+	var move_direction := position.direction_to(player.position)
 
-	if _attack_cooldown_reached and collision:
-		var node = (collision.get_collider() as Node)
-		var parent_node = node.get_parent()
-		if parent_node as Player:
-			parent_node.hit.emit(attack)
-			attack(parent_node)
+	movement_component_2d.update(delta, self, move_direction)
 
-	# move_and_slide()
-
-
-func _on_hurt_cooldown_timer_timeout() -> void:
-	_hurt_cooldown_reached = true
-
-
-func _on_attack_cooldown_timer_timeout() -> void:
-	_attack_cooldown_reached = true
+	attack_component.attack(_attack, [self, attack_component])
