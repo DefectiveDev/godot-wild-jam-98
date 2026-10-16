@@ -29,4 +29,5 @@ func _attack(overlapping_bodies: Array[Node2D], attack_component_self: AttackCom
 				)
 
 func _on_flash_beam_area_2d_has_overlapping_bodies_physics(overlapping_bodies: Array[Node2D]) -> void:
-	attack_component.attack(_attack, [overlapping_bodies, attack_component])
+	var attack = _attack.bind(overlapping_bodies,attack_component)
+	attack_component.attack_on_time(attack)

@@ -27,4 +27,6 @@ func _physics_process(delta: float) -> void:
 
 	movement_component_2d.update(delta, self, move_direction)
 
-	attack_component.attack(_attack, [self, attack_component])
+	var attack = _attack.bind(self, attack_component)
+
+	attack_component.attack_on_time(attack)
