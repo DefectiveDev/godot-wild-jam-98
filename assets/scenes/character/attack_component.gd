@@ -11,8 +11,9 @@ var _attack_cooldown_reached = true
 func _ready():
 	attack_cooldown_timer.timeout.connect(func(): _attack_cooldown_reached = true)
 
-func attack(attack_func: Callable, attack_args: Array) -> void:
+## Call an attack with respect to a cool down timer. To add arguments use Callable.bind()
+func attack_on_time(attack_func: Callable) -> void:
 	if _attack_cooldown_reached:
 		_attack_cooldown_reached = false
-		attack_func.callv(attack_args)
+		attack_func.call()
 		attack_cooldown_timer.start()
