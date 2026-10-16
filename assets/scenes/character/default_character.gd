@@ -1,4 +1,4 @@
-class_name DefaultCharacter2D extends CharacterBody2D
+@abstract class_name DefaultCharacter2D extends CharacterBody2D
 
 @export
 var health_component: HealthComponent
