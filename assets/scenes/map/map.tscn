@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://rjnjkhy2p2mq" path="res://assets/graphics/tilesets/graveyard act.png" id="1_a0dt8"]
 [ext_resource type="Texture2D" uid="uid://cbipghl1p8e" path="res://assets/graphics/tilesets/grave act 2.png" id="2_4hjbm"]
-[ext_resource type="Texture2D" path="res://assets/graphics/tilesets/exp-tree.png" id="3_jpsxh"]
+[ext_resource type="Texture2D" uid="uid://ycp8lrbxt4qn" path="res://assets/graphics/tilesets/exp-tree.png" id="3_jpsxh"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_djqbb"]
 tile_data = PackedInt32Array(0, 262146, 0, 65536, 262146, 1, 1, 327682, 0, 65537, 327682, 1)
