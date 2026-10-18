@@ -5,13 +5,110 @@
 [ext_resource type="PackedScene" uid="uid://sqjb3upnjc4" path="res://assets/scenes/radial_menu/radial_menu.tscn" id="2_f1m6i"]
 [ext_resource type="Script" uid="uid://yc05sy3x2waj" path="res://assets/scenes/character/player/flash_beam/flash_beam_area_2d.gd" id="2_nhw2a"]
 [ext_resource type="Texture2D" uid="uid://dayykh64xe4og" path="res://assets/graphics/characters/flash beam.png" id="3_i41vb"]
-[ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/scenes/character/player/placeholder/triangle-player.png" id="3_xo733"]
 [ext_resource type="Script" uid="uid://dfvg5sxmf2inw" path="res://assets/scenes/character/health_component.gd" id="5_nhw2a"]
+[ext_resource type="Texture2D" uid="uid://d3e74jrlbuwg" path="res://assets/graphics/tilesets/ferg_dead.png" id="6_dpipu"]
 [ext_resource type="Script" uid="uid://dpsrellmms07y" path="res://assets/scenes/character/attack_component.gd" id="6_nxno1"]
 [ext_resource type="Script" uid="uid://dh800fxakb2ia" path="res://assets/scenes/character/player/look_at_mouse_component.gd" id="6_ukxo7"]
 [ext_resource type="Script" uid="uid://c3kjamhm3adt1" path="res://assets/scenes/character/player/input_component.gd" id="7_5yrg0"]
 [ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="8_prfdf"]
 [ext_resource type="PackedScene" uid="uid://bw7ms640e423v" path="res://assets/scenes/character/progress_bar_2D.tscn" id="11_r7bp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxb8q"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lva2k"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3agc"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oo78"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi6xq"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqoqb"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvqws"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt2m7"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si7gt"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbjfg"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b367n"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l56m"]
+atlas = ExtResource("6_dpipu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lf3xv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxb8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lva2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3agc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oo78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi6xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqoqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvqws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt2m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si7gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbjfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b367n")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l56m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8sknh"]
 radius = 19.31968
@@ -19,20 +116,19 @@ radius = 19.31968
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
 radius = 19.104973
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dpipu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qr0h4"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
 bg_color = Color(0, 1, 0.43137255, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("on_death_queue_free", "input_component", "_sprite_to_color", "_radial_menu", "health_component", "attack_component", "movement_component_2d", "_progress_bar") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("input_component", "_sprite_to_color", "_radial_menu", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_wall_layers = 64
 script = ExtResource("1_s027a")
 on_death_scene = ExtResource("2_dpipu")
-on_death_queue_free = [NodePath("RadialMenu"), NodePath("ProgressBarSprite2D"), NodePath("LookAtMouseComponent2D"), NodePath("InputComponent"), NodePath("Rotation/FlashBeamArea2D")]
 input_component = NodePath("InputComponent")
 _sprite_to_color = NodePath("Rotation/FlashBeamArea2D/FlashBeamSprite2D")
 _radial_menu = NodePath("RadialMenu")
@@ -40,6 +136,7 @@ health_component = NodePath("HealthComponent")
 attack_component = NodePath("AttackComponent")
 movement_component_2d = NodePath("MovementComponent2D")
 _progress_bar = NodePath("ProgressBarSprite2D")
+on_death_queue_free = [NodePath("RadialMenu"), NodePath("ProgressBarSprite2D"), NodePath("LookAtMouseComponent2D"), NodePath("InputComponent"), NodePath("Rotation/FlashBeamArea2D")]
 
 [node name="RadialMenu" parent="." unique_id=1017979721 instance=ExtResource("2_f1m6i")]
 
@@ -48,6 +145,7 @@ _progress_bar = NodePath("ProgressBarSprite2D")
 [node name="FlashBeamArea2D" type="Area2D" parent="Rotation" unique_id=1449900755]
 self_modulate = Color(0.039215688, 1, 1, 1)
 z_index = 5
+position = Vector2(0, 14)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -67,8 +165,8 @@ flip_v = true
 region_enabled = true
 region_rect = Rect2(682.37305, 162.51666, 251.65637, 245.37875)
 
-[node name="TrianglePlayer" type="Sprite2D" parent="Rotation" unique_id=1603647954]
-texture = ExtResource("3_xo733")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotation" unique_id=1969189364]
+sprite_frames = SubResource("SpriteFrames_lf3xv")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=59353306]
 collision_layer = 2
@@ -113,7 +211,7 @@ _look_at_mouse_nodes = [NodePath("../Rotation")]
 
 [node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("11_r7bp0")]
 position = Vector2(0, 32)
-texture = SubResource("ViewportTexture_dpipu")
+texture = SubResource("ViewportTexture_qr0h4")
 
 [node name="ProgressBar" parent="ProgressBarSprite2D/SubViewport" parent_id_path=PackedInt32Array(1456786095, 16833076) index="0" unique_id=482403766]
 theme_override_styles/fill = SubResource("StyleBoxFlat_tiq60")
