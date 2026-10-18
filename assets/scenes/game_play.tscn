@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://dpiu2re6mhgh0"]
 
+[ext_resource type="PackedScene" uid="uid://3co2iwn6wib4" path="res://assets/scenes/game_manager/game_manager.tscn" id="1_80lhs"]
 [ext_resource type="PackedScene" uid="uid://qhhlavl3g1x8" path="res://assets/scenes/character/player/player.tscn" id="1_160j0"]
 [ext_resource type="PackedScene" uid="uid://cacmjsr4im1k1" path="res://assets/scenes/map/map.tscn" id="3_80lhs"]
-[ext_resource type="PackedScene" uid="uid://3co2iwn6wib4" path="res://assets/scenes/game_manager/game_manager.tscn" id="3_l5du7"]
 [ext_resource type="PackedScene" uid="uid://cgen6udgq8y2r" path="res://assets/scenes/ui/on_screen_score.tscn" id="4_80lhs"]
 
 [node name="GamePlay" type="Node2D" unique_id=1881000265]
 
+[node name="GameManager" parent="." unique_id=35938606 instance=ExtResource("1_80lhs")]
+
+[node name="Player" parent="." unique_id=255108489 instance=ExtResource("1_160j0")]
+position = Vector2(-65, 40)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=134676122]
 layer = 100
 
-[node name="OnScreenScore" parent="CanvasLayer" unique_id=1417802278 node_paths=PackedStringArray("_score_component") instance=ExtResource("4_80lhs")]
-_score_component = NodePath("../../GameManager/ScoreComponent")
-
-[node name="Player" parent="." unique_id=255108489 instance=ExtResource("1_160j0")]
-position = Vector2(0, 150)
-
-[node name="GameManager" parent="." unique_id=35938606 instance=ExtResource("3_l5du7")]
+[node name="OnScreenScore" parent="CanvasLayer" unique_id=1417802278 instance=ExtResource("4_80lhs")]
 
 [node name="Node2D" parent="." unique_id=1880656403 instance=ExtResource("3_80lhs")]
-
-[editable path="GameManager"]

@@ -12,6 +12,9 @@ var _sprite_to_color: Sprite2D
 @export
 var _radial_menu: RadialMenu
 
+@export
+var _animated_sprite: AnimatedSprite2D
+
 @onready var colors_and_shapes := GameManagerSingleton.GAME_MANAGER.colors_and_shapes
 
 func _init() -> void:
@@ -72,4 +75,10 @@ func  _on_death():
 			if not node.is_queued_for_deletion():
 				node.queue_free()
 	
-	get_tree().current_scene.add_child.call_deferred(on_death_scene.instantiate())
+	_animated_sprite.animation_finished.connect(
+		func():
+			get_tree().current_scene.add_child.call_deferred(on_death_scene.instantiate())
+			_animated_sprite.queue_free()
+			)
+	_animated_sprite.play("death")
+	

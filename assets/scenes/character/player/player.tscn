@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b367n")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -122,7 +122,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
 bg_color = Color(0, 1, 0.43137255, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("input_component", "_sprite_to_color", "_radial_menu", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("input_component", "_sprite_to_color", "_radial_menu", "_animated_sprite", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
@@ -132,6 +132,7 @@ on_death_scene = ExtResource("2_dpipu")
 input_component = NodePath("InputComponent")
 _sprite_to_color = NodePath("Rotation/FlashBeamArea2D/FlashBeamSprite2D")
 _radial_menu = NodePath("RadialMenu")
+_animated_sprite = NodePath("Rotation/AnimatedSprite2D")
 health_component = NodePath("HealthComponent")
 attack_component = NodePath("AttackComponent")
 movement_component_2d = NodePath("MovementComponent2D")
@@ -167,6 +168,8 @@ region_rect = Rect2(682.37305, 162.51666, 251.65637, 245.37875)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotation" unique_id=1969189364]
 sprite_frames = SubResource("SpriteFrames_lf3xv")
+animation = &"death"
+autoplay = "default"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=59353306]
 collision_layer = 2

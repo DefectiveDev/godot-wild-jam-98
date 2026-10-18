@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqtj0asq6olgl"]
 
 [ext_resource type="FontFile" uid="uid://c51d2baaavooi" path="res://addons/pixel_arial_11/PIXEARG_.TTF" id="1_7mnxw"]
+[ext_resource type="Script" uid="uid://cwy14s3kene2c" path="res://assets/scenes/ui/button.gd" id="2_54wso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54wso"]
 bg_color = Color(0.12659928, 0.14036185, 0.13869923, 1)
@@ -120,6 +121,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_25yxd")
 text = "Try again?"
+script = ExtResource("2_54wso")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EndScreen" unique_id=1944202289]
 libraries/ = SubResource("AnimationLibrary_pwtnk")
