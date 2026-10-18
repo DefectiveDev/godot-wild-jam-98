@@ -10,14 +10,18 @@ config_version=5
 
 [application]
 
-config/name="Godot Wild 98"
+config/name="Don't Croak Pond Chud"
+config/version="1"
 run/main_scene="uid://dpiu2re6mhgh0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/stretch_mode=0
+boot_splash/image="uid://bubt61uqrwvmo"
 config/icon="res://icon.svg"
 
 [autoload]
 
 BackGroundAudio="*uid://bifrvp3xfu6iw"
+PauseScreen="*uid://cnsnci5qx7hie"
 
 [display]
 

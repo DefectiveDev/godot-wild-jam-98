@@ -633,6 +633,17 @@ pattern_1 = SubResource("TileMapPattern_scb75")
 pattern_2 = SubResource("TileMapPattern_y0ukf")
 pattern_3 = SubResource("TileMapPattern_3whn8")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lf3xv"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y0ukf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_scb75"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_djqbb"]
+normal = Vector2(1, 0)
+
 [node name="Node2D" type="Node2D" unique_id=1880656403]
 position = Vector2(-1, -2)
 
@@ -648,3 +659,27 @@ tile_map_data = PackedByteArray("AADI/sH+AAACAAAAAgDI/sL+AQABAAAABADH/sL+AQAAAAA
 tile_set = SubResource("TileSet_8qao4")
 occlusion_enabled = false
 use_kinematic_bodies = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=733806536]
+position = Vector2(0, -1640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1666494856]
+shape = SubResource("WorldBoundaryShape2D_lf3xv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1291216756]
+position = Vector2(0, 1640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1386848653]
+shape = SubResource("WorldBoundaryShape2D_y0ukf")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=96710809]
+position = Vector2(1360, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=467597420]
+shape = SubResource("WorldBoundaryShape2D_scb75")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=935538748]
+position = Vector2(-1360, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=665240596]
+shape = SubResource("WorldBoundaryShape2D_djqbb")
