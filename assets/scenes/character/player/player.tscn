@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://c3kjamhm3adt1" path="res://assets/scenes/character/player/input_component.gd" id="7_5yrg0"]
 [ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="8_prfdf"]
 [ext_resource type="PackedScene" uid="uid://bw7ms640e423v" path="res://assets/scenes/character/progress_bar_2D.tscn" id="11_r7bp0"]
+[ext_resource type="AudioStream" uid="uid://cvrmwosd4tvmk" path="res://assets/sfx/hurt/hurt 1.wav" id="13_lva2k"]
+[ext_resource type="AudioStream" uid="uid://d0spg1qfld3p" path="res://assets/sfx/hurt/hurt 2.wav" id="14_w3agc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxb8q"]
 atlas = ExtResource("6_dpipu")
@@ -116,18 +118,26 @@ radius = 19.31968
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
 radius = 19.104973
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qr0h4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4oo78"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
 bg_color = Color(0, 1, 0.43137255, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("input_component", "_sprite_to_color", "_radial_menu", "_animated_sprite", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mi6xq"]
+random_pitch = 1.1892071
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("13_lva2k")
+stream_1/stream = ExtResource("14_w3agc")
+
+[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("_audio_streamer", "input_component", "_sprite_to_color", "_radial_menu", "_animated_sprite", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_wall_layers = 64
 script = ExtResource("1_s027a")
+_audio_streamer = NodePath("AudioStreamPlayer2D")
 on_death_scene = ExtResource("2_dpipu")
 input_component = NodePath("InputComponent")
 _sprite_to_color = NodePath("Rotation/FlashBeamArea2D/FlashBeamSprite2D")
@@ -214,10 +224,13 @@ _look_at_mouse_nodes = [NodePath("../Rotation")]
 
 [node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("11_r7bp0")]
 position = Vector2(0, 32)
-texture = SubResource("ViewportTexture_qr0h4")
+texture = SubResource("ViewportTexture_4oo78")
 
 [node name="ProgressBar" parent="ProgressBarSprite2D/SubViewport" parent_id_path=PackedInt32Array(1456786095, 16833076) index="0" unique_id=482403766]
 theme_override_styles/fill = SubResource("StyleBoxFlat_tiq60")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1744670700]
+stream = SubResource("AudioStreamRandomizer_mi6xq")
 
 [connection signal="has_overlapping_bodies_process" from="Rotation/FlashBeamArea2D" to="." method="_on_flash_beam_area_2d_has_overlapping_bodies_process"]
 

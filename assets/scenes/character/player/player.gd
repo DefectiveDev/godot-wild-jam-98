@@ -1,6 +1,9 @@
 class_name Player extends DefaultCharacter2D
 
 @export
+var _audio_streamer: AudioStreamPlayer2D
+
+@export
 var on_death_scene: PackedScene
 
 @export
@@ -25,6 +28,8 @@ func _ready() -> void:
 
 	health_component.died.connect(_on_death)
 
+	health_component.health_changed.connect(_on_hurt)
+
 	_radial_menu.selected_color_index.connect(_set_color_index)
 
 	_sprite_to_color.self_modulate = colors_and_shapes[_current_color_index].color
@@ -42,6 +47,12 @@ func _physics_process(delta: float) -> void:
 	input_component.update()
 	var move_direction = input_component.get_move_direction()
 	movement_component_2d.update(delta, self, move_direction)
+
+func _on_hurt(_arg_health_component: HealthComponent):
+	if health_component.get_is_dead():
+		return
+
+	_audio_streamer.play()
 
 func _set_color_index (color_index: int):
 	_current_color_index = color_index
