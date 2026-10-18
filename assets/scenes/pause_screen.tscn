@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cnsnci5qx7hie"]
+
+[ext_resource type="FontFile" uid="uid://c51d2baaavooi" path="res://addons/pixel_arial_11/PIXEARG_.TTF" id="1_4n6ir"]
+[ext_resource type="Script" uid="uid://cf27wp5pyja8g" path="res://assets/scenes/pause_screen.gd" id="1_8kyax"]
+
+[node name="PauseScreen" type="CanvasLayer" unique_id=24452723]
+process_mode = 3
+visible = false
+script = ExtResource("1_8kyax")
+
+[node name="Control" type="Control" parent="." unique_id=1930000377]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=2090964684]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel" unique_id=1598124544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_4n6ir")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[rainbow freq=1.0 sat=0.8 val=0.8 speed=0.1][shake rate=7.5 level=20 connected=1]Paused[/shake][/rainbow]
+
+[font_size=16]ESC to unpause[/font_size]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

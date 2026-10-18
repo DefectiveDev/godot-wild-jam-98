@@ -119,7 +119,7 @@ radius = 19.31968
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
 radius = 19.104973
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4oo78"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_w3agc"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
@@ -226,7 +226,7 @@ _look_at_mouse_nodes = [NodePath("../Rotation")]
 
 [node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("11_r7bp0")]
 position = Vector2(0, 32)
-texture = SubResource("ViewportTexture_4oo78")
+texture = SubResource("ViewportTexture_w3agc")
 
 [node name="ProgressBar" parent="ProgressBarSprite2D/SubViewport" parent_id_path=PackedInt32Array(1456786095, 16833076) index="0" unique_id=482403766]
 theme_override_styles/fill = SubResource("StyleBoxFlat_tiq60")
