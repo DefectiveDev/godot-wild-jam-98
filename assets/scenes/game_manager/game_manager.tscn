@@ -37,7 +37,7 @@ spawn_timer = NodePath("SpawnCooldownTimer")
 scene_to_spawn = ExtResource("5_cef5f")
 
 [node name="SpawnCooldownTimer" type="Timer" parent="SpawnerComponent" unique_id=1856865866]
-wait_time = 10.0
+wait_time = 3.5
 autostart = true
 
 [node name="ScoreComponent" type="Node" parent="." unique_id=80146872]
