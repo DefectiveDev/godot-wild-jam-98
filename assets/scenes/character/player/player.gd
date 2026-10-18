@@ -1,7 +1,10 @@
 class_name Player extends DefaultCharacter2D
 
 @export
-var _audio_streamer: AudioStreamPlayer2D
+var _hurt_audio_streamer: AudioStreamPlayer2D
+
+@export
+var _death_audio_streamer: AudioStreamPlayer2D
 
 @export
 var on_death_scene: PackedScene
@@ -52,7 +55,7 @@ func _on_hurt(_arg_health_component: HealthComponent):
 	if health_component.get_is_dead():
 		return
 
-	_audio_streamer.play()
+	_hurt_audio_streamer.play()
 
 func _set_color_index (color_index: int):
 	_current_color_index = color_index
@@ -86,6 +89,7 @@ func  _on_death():
 			if not node.is_queued_for_deletion():
 				node.queue_free()
 	
+	_death_audio_streamer.play()
 	_animated_sprite.animation_finished.connect(
 		func():
 			get_tree().current_scene.add_child.call_deferred(on_death_scene.instantiate())
