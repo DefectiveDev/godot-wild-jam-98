@@ -2,15 +2,43 @@
 
 [ext_resource type="Script" uid="uid://biutdlcdto3b5" path="res://assets/scenes/game_manager/game_manager.gd" id="1_cffl0"]
 [ext_resource type="Script" uid="uid://cfjw3ehfnxc1m" path="res://assets/scenes/game_manager/color_and_shapes/color_and_shape_resource.gd" id="2_0k7rf"]
-[ext_resource type="Resource" uid="uid://cv6t6mwiskrxu" path="res://assets/scenes/game_manager/color_and_shapes/triangle.tres" id="3_5bq8w"]
 [ext_resource type="Script" uid="uid://c4g43l1me6vy3" path="res://assets/scenes/game_manager/spawner_component.gd" id="4_5bq8w"]
+[ext_resource type="PackedScene" uid="uid://cxnxj34nmpsb1" path="res://assets/scenes/character/enemy/enemy.tscn" id="5_cef5f"]
+[ext_resource type="Script" uid="uid://d00m4itfexnpa" path="res://assets/scenes/game_manager/score_component.gd" id="5_tgu1v"]
 
-[node name="GameManager" type="Node" unique_id=35938606]
+[sub_resource type="Resource" id="Resource_ukxo7"]
+script = ExtResource("2_0k7rf")
+color = Color(0.9647059, 1, 0, 1)
+metadata/_custom_type_script = "uid://cfjw3ehfnxc1m"
+
+[sub_resource type="Resource" id="Resource_f1m6i"]
+script = ExtResource("2_0k7rf")
+color = Color(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://cfjw3ehfnxc1m"
+
+[sub_resource type="Resource" id="Resource_r7bp0"]
+script = ExtResource("2_0k7rf")
+color = Color(1, 0, 1, 1)
+metadata/_custom_type_script = "uid://cfjw3ehfnxc1m"
+
+[sub_resource type="Resource" id="Resource_dpipu"]
+script = ExtResource("2_0k7rf")
+color = Color(0, 1, 0, 1)
+metadata/_custom_type_script = "uid://cfjw3ehfnxc1m"
+
+[node name="GameManager" type="Node" unique_id=35938606 node_paths=PackedStringArray("_score_component")]
 script = ExtResource("1_cffl0")
-colors_and_shapes = Array[ExtResource("2_0k7rf")]([ExtResource("3_5bq8w")])
+_score_component = NodePath("ScoreComponent")
+colors_and_shapes = Array[ExtResource("2_0k7rf")]([SubResource("Resource_ukxo7"), SubResource("Resource_f1m6i"), SubResource("Resource_r7bp0"), SubResource("Resource_dpipu")])
 
 [node name="SpawnerComponent" type="Node" parent="." unique_id=901823606 node_paths=PackedStringArray("spawn_timer")]
 script = ExtResource("4_5bq8w")
-spawn_timer = NodePath("Timer")
+spawn_timer = NodePath("SpawnCooldownTimer")
+scene_to_spawn = ExtResource("5_cef5f")
 
-[node name="Timer" type="Timer" parent="SpawnerComponent" unique_id=1856865866]
+[node name="SpawnCooldownTimer" type="Timer" parent="SpawnerComponent" unique_id=1856865866]
+wait_time = 10.0
+autostart = true
+
+[node name="ScoreComponent" type="Node" parent="." unique_id=80146872]
+script = ExtResource("5_tgu1v")

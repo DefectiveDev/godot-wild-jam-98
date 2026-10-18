@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ColorAndShape" format=3 uid="uid://cv6t6mwiskrxu"]
-
-[ext_resource type="Script" uid="uid://bes24vxa3hkbb" path="res://assets/scenes/game_manager/color_and_shapes/color_and_shape_resource.gd" id="1_jacnq"]
-
-[resource]
-script = ExtResource("1_jacnq")
-color = Color(0.8, 0, 1, 1)
-metadata/_custom_type_script = "uid://bes24vxa3hkbb"

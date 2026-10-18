@@ -23,6 +23,11 @@ static  var _GAME_MANAGER: GameManagerSingleton = null:
 	get:
 		return _GAME_MANAGER
 
+@export
+var _score_component: ScoreComponent
+
+func get_score_component() -> ScoreComponent:
+	return _score_component
 
 var player: Player:
 	get:

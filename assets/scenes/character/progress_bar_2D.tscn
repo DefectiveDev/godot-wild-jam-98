@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bw7ms640e423v"]
+
+[ext_resource type="Script" uid="uid://c8xerktr0tasu" path="res://assets/scenes/character/progress_bar_2D_component.gd" id="1_x65g1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lf3xv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x65g1"]
+bg_color = Color(0.85486853, 0, 0.2230053, 1)
+
+[sub_resource type="Theme" id="Theme_gus75"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_x65g1")
+
+[node name="ProgressBarSprite2D" type="Sprite2D" unique_id=1456786095 node_paths=PackedStringArray("_progress_bar")]
+texture = SubResource("ViewportTexture_lf3xv")
+script = ExtResource("1_x65g1")
+_progress_bar = NodePath("SubViewport/ProgressBar")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=16833076]
+transparent_bg = true
+size = Vector2i(32, 8)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=482403766]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_gus75")
+value = 100.0
+show_percentage = false
