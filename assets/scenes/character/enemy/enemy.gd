@@ -1,5 +1,7 @@
 class_name Enemy extends DefaultCharacter2D
 
+@export
+var _audio_streamer: AudioStreamPlayer2D
 
 @export
 var _color_changing_sprite: AnimatedSprite2D = null
@@ -20,6 +22,8 @@ func _ready():
 
 	health_component.died.connect(_on_death)
 
+	health_component.health_changed.connect(_on_hurt)
+
 	_visible_notify.screen_entered.connect(
 		func():
 			if movement_component_2d:
@@ -35,6 +39,14 @@ func _ready():
 	_current_color_index = randi_range(0, colors_and_shapes.size() - 1)
 
 	_color_changing_sprite.self_modulate = colors_and_shapes[_current_color_index].color
+
+
+func _on_hurt(_arg_health_component: HealthComponent):
+	if health_component.get_is_dead():
+		return
+
+	_audio_streamer.play()
+
 
 
 func _on_death():

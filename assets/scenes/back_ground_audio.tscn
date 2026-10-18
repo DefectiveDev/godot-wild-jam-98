@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bifrvp3xfu6iw"]
+
+[ext_resource type="AudioStream" uid="uid://djd8te68552i5" path="res://addons/freesound_community-night-ambience-17064.mp3" id="1_ov6qe"]
+
+[node name="BackGroundAudio" type="Node" unique_id=366877781]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2130648307]
+stream = ExtResource("1_ov6qe")
+autoplay = true
+parameters/looping = true
