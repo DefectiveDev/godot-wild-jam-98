@@ -1,14 +1,30 @@
 class_name Player extends DefaultCharacter2D
 
-
-@onready var rotation_child_node = $Rotation
+@export
+var on_death_scene: PackedScene
 
 @export
 var input_component: InputComponent
 
+@export
+var _sprite_to_color: Sprite2D
+
+@export
+var _radial_menu: RadialMenu
+
+@onready var colors_and_shapes := GameManagerSingleton.GAME_MANAGER.colors_and_shapes
 
 func _init() -> void:
 	add_to_group("player")
+
+func _ready() -> void:
+	super._ready()
+
+	health_component.died.connect(_on_death)
+
+	_radial_menu.selected_color_index.connect(_set_color_index)
+
+	_sprite_to_color.self_modulate = colors_and_shapes[_current_color_index].color
 
 func _physics_process(delta: float) -> void:
 	# https://github.com/DefectiveDev/godot-wild-jam-98/issues/2
@@ -16,18 +32,44 @@ func _physics_process(delta: float) -> void:
 	#
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+
+	if health_component.get_is_dead():
+		return
 	
 	input_component.update()
 	var move_direction = input_component.get_move_direction()
 	movement_component_2d.update(delta, self, move_direction)
 
-func _attack(overlapping_bodies: Array[Node2D], attack_component_self: AttackComponent):
-	for body in overlapping_bodies:
-		if body is Enemy:
-			body.health_component.set_health(
-				body.health_component.get_health() - ceili(attack_component_self.damage_per_second * attack_component_self.attack_cooldown_timer.wait_time)
-				)
+func _set_color_index (color_index: int):
+	_current_color_index = color_index
+	_sprite_to_color.self_modulate = colors_and_shapes[_current_color_index].color
 
-func _on_flash_beam_area_2d_has_overlapping_bodies_physics(overlapping_bodies: Array[Node2D]) -> void:
-	var attack = _attack.bind(overlapping_bodies,attack_component)
-	attack_component.attack_on_time(attack)
+func  get_color_index() -> int:
+	return _current_color_index
+
+func _attack(overlapping_bodies: Array[Node2D], attack_component_self: AttackComponent, self_color_index: int):
+	for body in overlapping_bodies:
+		var enemy_node: Enemy = null
+
+		if body is Enemy:
+			enemy_node = body
+		elif body.owner is Enemy:
+			enemy_node = body.owner
+
+		if enemy_node is Enemy:
+			if self_color_index == enemy_node.get_color_index():
+				enemy_node.health_component.set_health(
+					enemy_node.health_component.get_health() - ceili(attack_component_self.damage_per_second * attack_component_self.attack_cooldown_timer.wait_time)
+					)
+
+func _on_flash_beam_area_2d_has_overlapping_bodies_process(overlapping_bodies: Array[Node2D]) -> void:
+	var attack = _attack.bind(overlapping_bodies, attack_component, get_color_index())
+	attack_component.attack_on_cooldown(attack)
+
+func  _on_death():
+	for node in on_death_queue_free:
+		if node:
+			if not node.is_queued_for_deletion():
+				node.queue_free()
+	
+	get_tree().current_scene.add_child.call_deferred(on_death_scene.instantiate())

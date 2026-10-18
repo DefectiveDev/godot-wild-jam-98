@@ -5,23 +5,30 @@ var max_health: int = 100
 
 @onready var _current_health: int = max_health
 
+
+var _is_dead := false
+
 func set_health(health: int) -> int:
-	_current_health = clampi(health, 0, max_health)
+	if _is_dead:
+		return _current_health
 
 	if health != get_health():
-		health_changed.emit()
-	
+		health_changed.emit(self)
+
+	_current_health = clampi(health, 0, max_health)
+
 	if get_health() <= 0:
-		_on_death()
+		_is_dead = true
+		died.emit()
 
 	return _current_health
 
 func get_health() -> int:
 	return _current_health
 
+func get_is_dead() -> bool:
+	return _is_dead
+
 signal health_changed(health_component: HealthComponent)
 
 signal died()
-
-func _on_death() -> void:
-	died.emit()

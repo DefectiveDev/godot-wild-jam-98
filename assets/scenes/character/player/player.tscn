@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://qhhlavl3g1x8"]
 
-[ext_resource type="Script" uid="uid://bpu2jhvkqpq1c" path="res://assets/scenes/character/player/player.gd" id="1_s027a"]
-[ext_resource type="Script" uid="uid://5alskwtq7ltu" path="res://assets/scenes/character/player/flash_beam/flash_beam_area_2d.gd" id="2_nhw2a"]
+[ext_resource type="Script" uid="uid://cyt7am0vcpck2" path="res://assets/scenes/character/player/player.gd" id="1_s027a"]
+[ext_resource type="PackedScene" uid="uid://cqtj0asq6olgl" path="res://assets/scenes/ui/end_screen.tscn" id="2_dpipu"]
+[ext_resource type="PackedScene" uid="uid://sqjb3upnjc4" path="res://assets/scenes/radial_menu/radial_menu.tscn" id="2_f1m6i"]
+[ext_resource type="Script" uid="uid://yc05sy3x2waj" path="res://assets/scenes/character/player/flash_beam/flash_beam_area_2d.gd" id="2_nhw2a"]
 [ext_resource type="Texture2D" uid="uid://dayykh64xe4og" path="res://assets/graphics/characters/flash beam.png" id="3_i41vb"]
 [ext_resource type="Texture2D" uid="uid://blnookqpcpfxl" path="res://assets/scenes/character/player/placeholder/triangle-player.png" id="3_xo733"]
 [ext_resource type="Script" uid="uid://dfvg5sxmf2inw" path="res://assets/scenes/character/health_component.gd" id="5_nhw2a"]
 [ext_resource type="Script" uid="uid://dpsrellmms07y" path="res://assets/scenes/character/attack_component.gd" id="6_nxno1"]
-[ext_resource type="Script" uid="uid://cybplg867wfyr" path="res://assets/scenes/character/player/look_at_mouse_component.gd" id="6_ukxo7"]
-[ext_resource type="Script" uid="uid://ch4xeihd5xet8" path="res://assets/scenes/character/player/input_component.gd" id="7_5yrg0"]
+[ext_resource type="Script" uid="uid://dh800fxakb2ia" path="res://assets/scenes/character/player/look_at_mouse_component.gd" id="6_ukxo7"]
+[ext_resource type="Script" uid="uid://c3kjamhm3adt1" path="res://assets/scenes/character/player/input_component.gd" id="7_5yrg0"]
 [ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="8_prfdf"]
+[ext_resource type="PackedScene" uid="uid://bw7ms640e423v" path="res://assets/scenes/character/progress_bar_2D.tscn" id="11_r7bp0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8sknh"]
 radius = 19.31968
@@ -16,16 +19,29 @@ radius = 19.31968
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
 radius = 19.104973
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("input_component", "health_component", "attack_component", "movement_component_2d") groups=["player"]]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dpipu"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
+bg_color = Color(0, 1, 0.43137255, 1)
+
+[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("on_death_queue_free", "input_component", "_sprite_to_color", "_radial_menu", "health_component", "attack_component", "movement_component_2d", "_progress_bar") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_wall_layers = 64
 script = ExtResource("1_s027a")
+on_death_scene = ExtResource("2_dpipu")
+on_death_queue_free = [NodePath("RadialMenu"), NodePath("ProgressBarSprite2D"), NodePath("LookAtMouseComponent2D"), NodePath("InputComponent"), NodePath("Rotation/FlashBeamArea2D")]
 input_component = NodePath("InputComponent")
+_sprite_to_color = NodePath("Rotation/FlashBeamArea2D/FlashBeamSprite2D")
+_radial_menu = NodePath("RadialMenu")
 health_component = NodePath("HealthComponent")
 attack_component = NodePath("AttackComponent")
 movement_component_2d = NodePath("MovementComponent2D")
+_progress_bar = NodePath("ProgressBarSprite2D")
+
+[node name="RadialMenu" parent="." unique_id=1017979721 instance=ExtResource("2_f1m6i")]
 
 [node name="Rotation" type="Node2D" parent="." unique_id=2126839320]
 
@@ -44,7 +60,6 @@ build_mode = 1
 polygon = PackedVector2Array(0, -14, -55, -134, 26.039917, -134, 55, -134)
 
 [node name="FlashBeamSprite2D" type="Sprite2D" parent="Rotation/FlashBeamArea2D" unique_id=701091375]
-unique_name_in_owner = true
 position = Vector2(-2, -125.263)
 scale = Vector2(0.95058924, 0.99784285)
 texture = ExtResource("3_i41vb")
@@ -76,6 +91,7 @@ metadata/_custom_type_script = "uid://dfvg5sxmf2inw"
 
 [node name="AttackComponent" type="Node" parent="." unique_id=749064118 node_paths=PackedStringArray("attack_cooldown_timer")]
 script = ExtResource("6_nxno1")
+damage_per_second = 100.0
 attack_cooldown_timer = NodePath("AttackCooldownTimer")
 metadata/_custom_type_script = "uid://dpsrellmms07y"
 
@@ -85,15 +101,23 @@ one_shot = true
 
 [node name="InputComponent" type="Node" parent="." unique_id=1991283116]
 script = ExtResource("7_5yrg0")
-metadata/_custom_type_script = "uid://ch4xeihd5xet8"
 
 [node name="MovementComponent2D" type="Node" parent="." unique_id=1633809515]
 script = ExtResource("8_prfdf")
+max_speed = 150.0
 metadata/_custom_type_script = "uid://johirolxitn5"
 
 [node name="LookAtMouseComponent2D" type="Node" parent="." unique_id=1961309647 node_paths=PackedStringArray("_look_at_mouse_nodes")]
 script = ExtResource("6_ukxo7")
 _look_at_mouse_nodes = [NodePath("../Rotation")]
-metadata/_custom_type_script = "uid://cybplg867wfyr"
 
-[connection signal="has_overlapping_bodies_physics" from="Rotation/FlashBeamArea2D" to="." method="_on_flash_beam_area_2d_has_overlapping_bodies_physics"]
+[node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("11_r7bp0")]
+position = Vector2(0, 32)
+texture = SubResource("ViewportTexture_dpipu")
+
+[node name="ProgressBar" parent="ProgressBarSprite2D/SubViewport" parent_id_path=PackedInt32Array(1456786095, 16833076) index="0" unique_id=482403766]
+theme_override_styles/fill = SubResource("StyleBoxFlat_tiq60")
+
+[connection signal="has_overlapping_bodies_process" from="Rotation/FlashBeamArea2D" to="." method="_on_flash_beam_area_2d_has_overlapping_bodies_process"]
+
+[editable path="ProgressBarSprite2D"]
