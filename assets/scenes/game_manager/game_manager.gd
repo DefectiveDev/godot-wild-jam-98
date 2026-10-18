@@ -4,6 +4,7 @@ extends Node
 # Create game manager to adjust settings and access player globally
 class_name GameManagerSingleton
 
+
 static var GAME_MANAGER: GameManagerSingleton:
 	get:
 		if not _GAME_MANAGER:

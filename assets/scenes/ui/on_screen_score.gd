@@ -1,7 +1,6 @@
 extends Control
 
-@export
-var _score_component: ScoreComponent
+@onready var _score_component: ScoreComponent = GameManagerSingleton.GAME_MANAGER._score_component
 
 @export
 var _score_label: Label
