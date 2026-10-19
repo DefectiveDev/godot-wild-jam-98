@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/home/framework/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/home/framework/.nuget/packages/</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">7.0.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="/home/framework/.nuget/packages/" />
+  </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)2dog.godotsharp/4.7.2.124/buildTransitive/2dog.godotsharp.props" Condition="Exists('$(NuGetPackageRoot)2dog.godotsharp/4.7.2.124/buildTransitive/2dog.godotsharp.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.godotsharp.editor/4.7.2.124/buildTransitive/2dog.godotsharp.editor.props" Condition="Exists('$(NuGetPackageRoot)2dog.godotsharp.editor/4.7.2.124/buildTransitive/2dog.godotsharp.editor.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.win-x64.release/4.7.2.28/buildTransitive/2dog.win-x64.release.props" Condition="Exists('$(NuGetPackageRoot)2dog.win-x64.release/4.7.2.28/buildTransitive/2dog.win-x64.release.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.win-x64.editor/4.7.2.28/buildTransitive/2dog.win-x64.editor.props" Condition="Exists('$(NuGetPackageRoot)2dog.win-x64.editor/4.7.2.28/buildTransitive/2dog.win-x64.editor.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.win-x64.debug/4.7.2.28/buildTransitive/2dog.win-x64.debug.props" Condition="Exists('$(NuGetPackageRoot)2dog.win-x64.debug/4.7.2.28/buildTransitive/2dog.win-x64.debug.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.win-x64/4.7.2.28/buildTransitive/2dog.win-x64.props" Condition="Exists('$(NuGetPackageRoot)2dog.win-x64/4.7.2.28/buildTransitive/2dog.win-x64.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.tools/4.7.2.28/buildTransitive/2dog.tools.props" Condition="Exists('$(NuGetPackageRoot)2dog.tools/4.7.2.28/buildTransitive/2dog.tools.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.osx-arm64.release/4.7.2.28/buildTransitive/2dog.osx-arm64.release.props" Condition="Exists('$(NuGetPackageRoot)2dog.osx-arm64.release/4.7.2.28/buildTransitive/2dog.osx-arm64.release.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.osx-arm64.editor/4.7.2.28/buildTransitive/2dog.osx-arm64.editor.props" Condition="Exists('$(NuGetPackageRoot)2dog.osx-arm64.editor/4.7.2.28/buildTransitive/2dog.osx-arm64.editor.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.osx-arm64.debug/4.7.2.28/buildTransitive/2dog.osx-arm64.debug.props" Condition="Exists('$(NuGetPackageRoot)2dog.osx-arm64.debug/4.7.2.28/buildTransitive/2dog.osx-arm64.debug.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.osx-arm64/4.7.2.28/buildTransitive/2dog.osx-arm64.props" Condition="Exists('$(NuGetPackageRoot)2dog.osx-arm64/4.7.2.28/buildTransitive/2dog.osx-arm64.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.linux-x64.release/4.7.2.28/buildTransitive/2dog.linux-x64.release.props" Condition="Exists('$(NuGetPackageRoot)2dog.linux-x64.release/4.7.2.28/buildTransitive/2dog.linux-x64.release.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.linux-x64.editor/4.7.2.28/buildTransitive/2dog.linux-x64.editor.props" Condition="Exists('$(NuGetPackageRoot)2dog.linux-x64.editor/4.7.2.28/buildTransitive/2dog.linux-x64.editor.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.linux-x64.debug/4.7.2.28/buildTransitive/2dog.linux-x64.debug.props" Condition="Exists('$(NuGetPackageRoot)2dog.linux-x64.debug/4.7.2.28/buildTransitive/2dog.linux-x64.debug.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.linux-x64/4.7.2.28/buildTransitive/2dog.linux-x64.props" Condition="Exists('$(NuGetPackageRoot)2dog.linux-x64/4.7.2.28/buildTransitive/2dog.linux-x64.props')" />
+    <Import Project="$(NuGetPackageRoot)2dog.engine/4.7.2.124/buildTransitive/2dog.engine.props" Condition="Exists('$(NuGetPackageRoot)2dog.engine/4.7.2.124/buildTransitive/2dog.engine.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Pkg2dog_tools Condition=" '$(Pkg2dog_tools)' == '' ">/home/framework/.nuget/packages/2dog.tools/4.7.2.28</Pkg2dog_tools>
+    <Pkg2dog_engine Condition=" '$(Pkg2dog_engine)' == '' ">/home/framework/.nuget/packages/2dog.engine/4.7.2.124</Pkg2dog_engine>
+  </PropertyGroup>
+</Project>
