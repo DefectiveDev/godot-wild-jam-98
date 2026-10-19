@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Editor" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="DontCroakPondChud.2dog/DontCroakPondChud.2dog.csproj" />
+  <Project Path="DontCroakPondChud.csproj" />
+</Solution>
