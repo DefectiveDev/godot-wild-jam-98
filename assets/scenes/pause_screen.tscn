@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnsnci5qx7hie"]
 
 [ext_resource type="FontFile" uid="uid://c51d2baaavooi" path="res://addons/pixel_arial_11/PIXEARG_.TTF" id="1_4n6ir"]
-[ext_resource type="Script" uid="uid://cf27wp5pyja8g" path="res://assets/scenes/pause_screen.gd" id="1_8kyax"]
+[ext_resource type="Script" uid="uid://c3wjmeiudsqs7" path="res://assets/scenes/PauseScreen.cs" id="1_8kyax"]
 
 [node name="PauseScreen" type="CanvasLayer" unique_id=24452723]
 process_mode = 3
