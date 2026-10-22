@@ -25,6 +25,8 @@
                  })
                 # some builds require python so we add this as well.
                 python3
+                # csharp formatter
+                csharpier
             ];
         };
 

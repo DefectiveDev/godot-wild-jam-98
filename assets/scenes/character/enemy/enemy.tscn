@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://cxnxj34nmpsb1"]
 
-[ext_resource type="Script" uid="uid://bu4k3ivab7fy1" path="res://assets/scenes/character/enemy/enemy.gd" id="1_kbpvo"]
+[ext_resource type="Script" uid="uid://djx4abn54gpf7" path="res://assets/scenes/character/enemy/Enemy.cs" id="1_kgdqw"]
 [ext_resource type="Texture2D" uid="uid://84r4ourmqc7g" path="res://assets/scenes/character/enemy/enemy.png" id="2_tiq60"]
-[ext_resource type="Script" uid="uid://dfvg5sxmf2inw" path="res://assets/scenes/character/health_component.gd" id="3_ryw18"]
-[ext_resource type="Script" uid="uid://dpsrellmms07y" path="res://assets/scenes/character/attack_component.gd" id="4_tiq60"]
-[ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="5_8avt7"]
 [ext_resource type="PackedScene" uid="uid://bw7ms640e423v" path="res://assets/scenes/character/progress_bar_2D.tscn" id="6_tiq60"]
 [ext_resource type="AudioStream" uid="uid://bg1hbbw678hi4" path="res://assets/sfx/jump/jump 1.wav" id="7_ygv7p"]
 [ext_resource type="AudioStream" uid="uid://cpr1lb0olfedr" path="res://assets/sfx/jump/jump 2.wav" id="8_p0lrb"]
 [ext_resource type="AudioStream" uid="uid://blnhd1tlcuysc" path="res://assets/sfx/jump/jump 3.wav" id="9_2ct55"]
+[ext_resource type="Script" uid="uid://d3tcawr8pbnql" path="res://assets/scenes/character/MovementComponent2D.cs" id="9_ygv7p"]
 [ext_resource type="AudioStream" uid="uid://bxjt64rjoc8ib" path="res://assets/sfx/jump/jump 4.wav" id="10_gknh4"]
+[ext_resource type="Script" uid="uid://c1xxfilvttdr2" path="res://assets/scenes/character/AttackComponent.cs" id="11_2ct55"]
 [ext_resource type="AudioStream" uid="uid://cay751rj7xswh" path="res://assets/sfx/jump/jump 5.wav" id="11_7ichj"]
+[ext_resource type="Script" uid="uid://empcxfk1jacy" path="res://assets/scenes/character/HealthComponent.cs" id="11_p0lrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8avt7"]
 atlas = ExtResource("2_tiq60")
@@ -51,7 +51,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxb8q"]
 radius = 15.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tiq60"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ygv7p"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_tiq60"]
@@ -101,21 +101,22 @@ stream_2/stream = ExtResource("9_2ct55")
 stream_3/stream = ExtResource("10_gknh4")
 stream_4/stream = ExtResource("11_7ichj")
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1119381428 node_paths=PackedStringArray("_audio_streamer", "_color_changing_sprite", "_visible_notify", "_animation_player", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1119381428 node_paths=PackedStringArray("_audioStreamer", "_sprite2DToChangeColor", "_visibleNotify", "_animationPlayer", "_healthComponent", "_attackComponent", "_movementComponent2D", "_progressBar2DComponent", "NodesToQueueFreeOnDeath")]
 collision_layer = 4
 collision_mask = 6
 collision_priority = 0.1
 motion_mode = 1
-script = ExtResource("1_kbpvo")
-_audio_streamer = NodePath("AudioStreamPlayer2D")
-_color_changing_sprite = NodePath("AnimatedSprite2D")
-_visible_notify = NodePath("VisibleOnScreenNotifier2D")
-_animation_player = NodePath("AnimationPlayer")
-health_component = NodePath("HealthComponent")
-attack_component = NodePath("AttackComponent")
-movement_component_2d = NodePath("MovementComponent2D")
-_progress_bar = NodePath("ProgressBarSprite2D")
-on_death_queue_free = [NodePath("ProgressBarSprite2D"), NodePath("MovementComponent2D")]
+max_slides = 1
+script = ExtResource("1_kgdqw")
+_audioStreamer = NodePath("AudioStreamPlayer2D")
+_sprite2DToChangeColor = NodePath("AnimatedSprite2D")
+_visibleNotify = NodePath("VisibleOnScreenNotifier2D")
+_animationPlayer = NodePath("AnimationPlayer")
+_healthComponent = NodePath("HealthComponent")
+_attackComponent = NodePath("AttackComponent")
+_movementComponent2D = NodePath("MovementComponent2D")
+_progressBar2DComponent = NodePath("ProgressBarSprite2D")
+NodesToQueueFreeOnDeath = [NodePath("CollisionShape2D"), NodePath("MovementComponent2D"), NodePath("ProgressBarSprite2D")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1021420615]
 sprite_frames = SubResource("SpriteFrames_lf3xv")
@@ -124,27 +125,9 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=528549607]
 shape = SubResource("CircleShape2D_rxb8q")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1723014206]
-script = ExtResource("3_ryw18")
-metadata/_custom_type_script = "uid://dfvg5sxmf2inw"
-
-[node name="AttackComponent" type="Node" parent="." unique_id=2141599944 node_paths=PackedStringArray("attack_cooldown_timer")]
-script = ExtResource("4_tiq60")
-attack_cooldown_timer = NodePath("AttackCooldownTimer")
-metadata/_custom_type_script = "uid://dpsrellmms07y"
-
-[node name="AttackCooldownTimer" type="Timer" parent="AttackComponent" unique_id=2038533553]
-wait_time = 0.25
-one_shot = true
-
-[node name="MovementComponent2D" type="Node" parent="." unique_id=824866318]
-script = ExtResource("5_8avt7")
-max_speed = 170.0
-metadata/_custom_type_script = "uid://johirolxitn5"
-
 [node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("6_tiq60")]
 position = Vector2(0, 20)
-texture = SubResource("ViewportTexture_tiq60")
+texture = SubResource("ViewportTexture_ygv7p")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=692899303]
 rect = Rect2(-32, -32, 64, 64)
@@ -154,3 +137,22 @@ libraries/ = SubResource("AnimationLibrary_s4m2c")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=394841294]
 stream = SubResource("AudioStreamRandomizer_8avt7")
+
+[node name="MovementComponent2D" type="Node" parent="." unique_id=1041623353]
+script = ExtResource("9_ygv7p")
+MaxSpeed = 115.0
+metadata/_custom_type_script = "uid://d3tcawr8pbnql"
+
+[node name="AttackComponent" type="Node" parent="." unique_id=75772171 node_paths=PackedStringArray("_attackCooldownTimer")]
+script = ExtResource("11_2ct55")
+DamagePerSecond = 1.0
+_attackCooldownTimer = NodePath("AttackCooldownTimer")
+metadata/_custom_type_script = "uid://c1xxfilvttdr2"
+
+[node name="AttackCooldownTimer" type="Timer" parent="AttackComponent" unique_id=2038533553]
+wait_time = 0.25
+one_shot = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1941856659]
+script = ExtResource("11_p0lrb")
+metadata/_custom_type_script = "uid://empcxfk1jacy"

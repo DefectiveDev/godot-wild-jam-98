@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DontCroakPondChud.2dog")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a123de1e0b9d58581edba0fe24e9350e75e1cd52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf94b68bdd5cba403dcf8752c06543da32f92a0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DontCroakPondChud.2dog")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DontCroakPondChud.2dog")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

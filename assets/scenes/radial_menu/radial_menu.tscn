@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sqjb3upnjc4"]
 
 [ext_resource type="Texture2D" uid="uid://4740mi77u8ym" path="res://assets/scenes/white_square.png" id="1_5sfms"]
-[ext_resource type="Script" uid="uid://dvwp0b4bcdwmg" path="res://assets/scenes/radial_menu/radial_menu.gd" id="1_jh8xj"]
+[ext_resource type="Script" uid="uid://d1f5pesnwp5kq" path="res://assets/scenes/radial_menu/RadialMenu.cs" id="1_jh8xj"]
 
 [node name="RadialMenu" type="Control" unique_id=1017979721]
 visible = false

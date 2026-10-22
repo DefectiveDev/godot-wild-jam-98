@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://qhhlavl3g1x8"]
 
-[ext_resource type="Script" uid="uid://cyt7am0vcpck2" path="res://assets/scenes/character/player/player.gd" id="1_s027a"]
+[ext_resource type="Script" uid="uid://hcv6d67iqs7j" path="res://assets/scenes/character/player/Player.cs" id="1_lva2k"]
 [ext_resource type="PackedScene" uid="uid://cqtj0asq6olgl" path="res://assets/scenes/ui/end_screen.tscn" id="2_dpipu"]
 [ext_resource type="PackedScene" uid="uid://sqjb3upnjc4" path="res://assets/scenes/radial_menu/radial_menu.tscn" id="2_f1m6i"]
-[ext_resource type="Script" uid="uid://yc05sy3x2waj" path="res://assets/scenes/character/player/flash_beam/flash_beam_area_2d.gd" id="2_nhw2a"]
 [ext_resource type="Texture2D" uid="uid://dayykh64xe4og" path="res://assets/graphics/characters/flash beam.png" id="3_i41vb"]
-[ext_resource type="Script" uid="uid://dfvg5sxmf2inw" path="res://assets/scenes/character/health_component.gd" id="5_nhw2a"]
+[ext_resource type="Script" uid="uid://nc6lpeg4pabw" path="res://assets/scenes/character/player/FlashBeamShapeCast2D.cs" id="5_w3agc"]
 [ext_resource type="Texture2D" uid="uid://d3e74jrlbuwg" path="res://assets/graphics/tilesets/ferg_dead.png" id="6_dpipu"]
-[ext_resource type="Script" uid="uid://dpsrellmms07y" path="res://assets/scenes/character/attack_component.gd" id="6_nxno1"]
-[ext_resource type="Script" uid="uid://dh800fxakb2ia" path="res://assets/scenes/character/player/look_at_mouse_component.gd" id="6_ukxo7"]
-[ext_resource type="Script" uid="uid://c3kjamhm3adt1" path="res://assets/scenes/character/player/input_component.gd" id="7_5yrg0"]
-[ext_resource type="Script" uid="uid://johirolxitn5" path="res://assets/scenes/character/movement_component.gd" id="8_prfdf"]
+[ext_resource type="Script" uid="uid://hmf6x8c5ly41" path="res://assets/scenes/character/player/LookAtMouseComponent2D.cs" id="8_w3agc"]
+[ext_resource type="Script" uid="uid://b66xw2ax0bdi7" path="res://assets/scenes/character/player/InputComponent.cs" id="9_w3agc"]
 [ext_resource type="PackedScene" uid="uid://bw7ms640e423v" path="res://assets/scenes/character/progress_bar_2D.tscn" id="11_r7bp0"]
 [ext_resource type="AudioStream" uid="uid://cvrmwosd4tvmk" path="res://assets/sfx/hurt/hurt 1.wav" id="13_lva2k"]
+[ext_resource type="Script" uid="uid://c1xxfilvttdr2" path="res://assets/scenes/character/AttackComponent.cs" id="13_w3agc"]
+[ext_resource type="Script" uid="uid://empcxfk1jacy" path="res://assets/scenes/character/HealthComponent.cs" id="14_4oo78"]
 [ext_resource type="AudioStream" uid="uid://d0spg1qfld3p" path="res://assets/sfx/hurt/hurt 2.wav" id="14_w3agc"]
+[ext_resource type="Script" uid="uid://d3tcawr8pbnql" path="res://assets/scenes/character/MovementComponent2D.cs" id="15_mi6xq"]
 [ext_resource type="AudioStream" uid="uid://dfhd1bsf5wwq3" path="res://assets/sfx/hurt/hurt 3.wav" id="15_w3agc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxb8q"]
@@ -113,13 +113,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lva2k"]
+points = PackedVector2Array(0, 0, -100, -212, 100, -212)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8sknh"]
 radius = 19.31968
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gfpk"]
 radius = 19.104973
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w3agc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4oo78"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiq60"]
@@ -132,56 +135,50 @@ streams_count = 2
 stream_0/stream = ExtResource("13_lva2k")
 stream_1/stream = ExtResource("14_w3agc")
 
-[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("_hurt_audio_streamer", "_death_audio_streamer", "input_component", "_sprite_to_color", "_radial_menu", "_animated_sprite", "health_component", "attack_component", "movement_component_2d", "_progress_bar", "on_death_queue_free") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=255108489 node_paths=PackedStringArray("_hurtAudioStreamer", "_deathAudioStreamer", "_inputComponent", "_sprite2DToChangeColor", "_radialMenu", "_animatedSprite2D", "_flashBeamShapeCast2D", "_healthComponent", "_attackComponent", "_movementComponent2D", "_progressBar2DComponent") groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_wall_layers = 64
-script = ExtResource("1_s027a")
-_hurt_audio_streamer = NodePath("HurtAudioStreamPlayer2D")
-_death_audio_streamer = NodePath("DeathAudioStreamPlayer2D")
-on_death_scene = ExtResource("2_dpipu")
-input_component = NodePath("InputComponent")
-_sprite_to_color = NodePath("Rotation/FlashBeamArea2D/FlashBeamSprite2D")
-_radial_menu = NodePath("RadialMenu")
-_animated_sprite = NodePath("Rotation/AnimatedSprite2D")
-health_component = NodePath("HealthComponent")
-attack_component = NodePath("AttackComponent")
-movement_component_2d = NodePath("MovementComponent2D")
-_progress_bar = NodePath("ProgressBarSprite2D")
-on_death_queue_free = [NodePath("RadialMenu"), NodePath("ProgressBarSprite2D"), NodePath("LookAtMouseComponent2D"), NodePath("InputComponent"), NodePath("Rotation/FlashBeamArea2D")]
+script = ExtResource("1_lva2k")
+_hurtAudioStreamer = NodePath("HurtAudioStreamPlayer2D")
+_deathAudioStreamer = NodePath("DeathAudioStreamPlayer2D")
+_onDeathScene = ExtResource("2_dpipu")
+_inputComponent = NodePath("InputComponent")
+_sprite2DToChangeColor = NodePath("Rotation/ShapeCast2D/FlashBeamSprite2D")
+_radialMenu = NodePath("CanvasLayer/RadialMenu")
+_animatedSprite2D = NodePath("Rotation/AnimatedSprite2D")
+_flashBeamShapeCast2D = NodePath("Rotation/ShapeCast2D")
+_healthComponent = NodePath("HealthComponent")
+_attackComponent = NodePath("AttackComponent")
+_movementComponent2D = NodePath("MovementComponent2D")
+_progressBar2DComponent = NodePath("ProgressBarSprite2D")
 
-[node name="RadialMenu" parent="." unique_id=1017979721 instance=ExtResource("2_f1m6i")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1054773146]
+layer = 0
+
+[node name="RadialMenu" parent="CanvasLayer" unique_id=1017979721 instance=ExtResource("2_f1m6i")]
 
 [node name="Rotation" type="Node2D" parent="." unique_id=2126839320]
-
-[node name="FlashBeamArea2D" type="Area2D" parent="Rotation" unique_id=1449900755]
-self_modulate = Color(0.039215688, 1, 1, 1)
-z_index = 5
-position = Vector2(0, 14)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("2_nhw2a")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotation/FlashBeamArea2D" unique_id=1411233279]
-position = Vector2(4.7683716e-07, 9)
-scale = Vector2(1.7727271, 1.7395835)
-build_mode = 1
-polygon = PackedVector2Array(0, -14, -55, -134, 26.039917, -134, 55, -134)
-
-[node name="FlashBeamSprite2D" type="Sprite2D" parent="Rotation/FlashBeamArea2D" unique_id=701091375]
-position = Vector2(-2, -125.263)
-scale = Vector2(0.95058924, 0.99784285)
-texture = ExtResource("3_i41vb")
-flip_v = true
-region_enabled = true
-region_rect = Rect2(682.37305, 162.51666, 251.65637, 245.37875)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotation" unique_id=1969189364]
 sprite_frames = SubResource("SpriteFrames_lf3xv")
 animation = &"death"
 autoplay = "default"
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Rotation" unique_id=59622618]
+shape = SubResource("ConvexPolygonShape2D_lva2k")
+target_position = Vector2(0, 0)
+collision_mask = 4
+script = ExtResource("5_w3agc")
+
+[node name="FlashBeamSprite2D" type="Sprite2D" parent="Rotation/ShapeCast2D" unique_id=701091375]
+position = Vector2(-2, -111.263)
+scale = Vector2(0.95058924, 0.99784285)
+texture = ExtResource("3_i41vb")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(682.37305, 162.51666, 251.65637, 245.37875)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=59353306]
 collision_layer = 2
@@ -198,35 +195,16 @@ shape = SubResource("CircleShape2D_0gfpk")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=824747456]
 limit_enabled = false
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1170166455]
-script = ExtResource("5_nhw2a")
-metadata/_custom_type_script = "uid://dfvg5sxmf2inw"
-
-[node name="AttackComponent" type="Node" parent="." unique_id=749064118 node_paths=PackedStringArray("attack_cooldown_timer")]
-script = ExtResource("6_nxno1")
-damage_per_second = 100.0
-attack_cooldown_timer = NodePath("AttackCooldownTimer")
-metadata/_custom_type_script = "uid://dpsrellmms07y"
-
-[node name="AttackCooldownTimer" type="Timer" parent="AttackComponent" unique_id=1679109577]
-wait_time = 0.25
-one_shot = true
-
 [node name="InputComponent" type="Node" parent="." unique_id=1991283116]
-script = ExtResource("7_5yrg0")
+script = ExtResource("9_w3agc")
 
-[node name="MovementComponent2D" type="Node" parent="." unique_id=1633809515]
-script = ExtResource("8_prfdf")
-max_speed = 150.0
-metadata/_custom_type_script = "uid://johirolxitn5"
-
-[node name="LookAtMouseComponent2D" type="Node" parent="." unique_id=1961309647 node_paths=PackedStringArray("_look_at_mouse_nodes")]
-script = ExtResource("6_ukxo7")
-_look_at_mouse_nodes = [NodePath("../Rotation")]
+[node name="LookAtMouseComponent2D" type="Node" parent="." unique_id=1961309647 node_paths=PackedStringArray("_lookAtMouseNodes")]
+script = ExtResource("8_w3agc")
+_lookAtMouseNodes = [NodePath("../Rotation")]
 
 [node name="ProgressBarSprite2D" parent="." unique_id=1456786095 instance=ExtResource("11_r7bp0")]
 position = Vector2(0, 32)
-texture = SubResource("ViewportTexture_w3agc")
+texture = SubResource("ViewportTexture_4oo78")
 
 [node name="ProgressBar" parent="ProgressBarSprite2D/SubViewport" parent_id_path=PackedInt32Array(1456786095, 16833076) index="0" unique_id=482403766]
 theme_override_styles/fill = SubResource("StyleBoxFlat_tiq60")
@@ -240,6 +218,23 @@ stream = ExtResource("15_w3agc")
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=875418039]
 current = true
 
-[connection signal="has_overlapping_bodies_process" from="Rotation/FlashBeamArea2D" to="." method="_on_flash_beam_area_2d_has_overlapping_bodies_process"]
+[node name="AttackComponent" type="Node" parent="." unique_id=1932532467 node_paths=PackedStringArray("_attackCooldownTimer")]
+script = ExtResource("13_w3agc")
+DamagePerSecond = 150.0
+_attackCooldownTimer = NodePath("AttackCooldownTimer")
+metadata/_custom_type_script = "uid://c1xxfilvttdr2"
+
+[node name="AttackCooldownTimer" type="Timer" parent="AttackComponent" unique_id=1679109577]
+wait_time = 0.25
+one_shot = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1026368145]
+script = ExtResource("14_4oo78")
+metadata/_custom_type_script = "uid://empcxfk1jacy"
+
+[node name="MovementComponent2D" type="Node" parent="." unique_id=1128241683]
+script = ExtResource("15_mi6xq")
+MaxSpeed = 100.0
+metadata/_custom_type_script = "uid://d3tcawr8pbnql"
 
 [editable path="ProgressBarSprite2D"]
