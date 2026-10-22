@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cqtj0asq6olgl"]
 
 [ext_resource type="FontFile" uid="uid://c51d2baaavooi" path="res://addons/pixel_arial_11/PIXEARG_.TTF" id="1_7mnxw"]
-[ext_resource type="Script" uid="uid://cwy14s3kene2c" path="res://assets/scenes/ui/button.gd" id="2_54wso"]
+[ext_resource type="Script" uid="uid://uhfee2vfmeno" path="res://assets/scenes/ui/ReloadButton.cs" id="2_54wso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54wso"]
 bg_color = Color(0.12659928, 0.14036185, 0.13869923, 1)

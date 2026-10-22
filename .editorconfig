@@ -2,3 +2,54 @@ root = true
 
 [*]
 charset = utf-8
+
+[*.cs]
+# # Define the private fields symbol group
+# dotnet_naming_style.private_fields_with_underscore.capitalization = camel_case
+# dotnet_naming_style.private_fields_with_underscore.required_prefix = _
+# 
+# # Define the naming rule for private fields
+# dotnet_naming_rule.private_fields_must_have_underscore.symbols = private_fields_symbols
+# dotnet_naming_rule.private_fields_must_have_underscore.style = private_fields_with_underscore
+# dotnet_naming_rule.private_fields_must_have_underscore.severity = suggestion
+# 
+# # Map the symbols to private/instance fields
+# dotnet_naming_symbols.private_fields_symbols.applicable_kinds = field
+# dotnet_naming_symbols.private_fields_symbols.applicable_accessibilities = private
+# dotnet_naming_symbols.private_fields_symbols.required_modifiers = 
+
+# name all constant fields using PascalCase
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols  = constant_fields
+dotnet_naming_rule.constant_fields_should_be_pascal_case.style    = pascal_case_style
+dotnet_naming_symbols.constant_fields.applicable_kinds   = field
+dotnet_naming_symbols.constant_fields.required_modifiers = const
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# static fields should have s_ prefix
+dotnet_naming_rule.static_fields_should_have_prefix.severity = suggestion
+dotnet_naming_rule.static_fields_should_have_prefix.symbols  = static_fields
+dotnet_naming_rule.static_fields_should_have_prefix.style    = static_prefix_style
+dotnet_naming_symbols.static_fields.applicable_kinds   = field
+dotnet_naming_symbols.static_fields.required_modifiers = static
+dotnet_naming_symbols.static_fields.applicable_accessibilities = private, internal, private_protected
+dotnet_naming_style.static_prefix_style.required_prefix = s_
+dotnet_naming_style.static_prefix_style.capitalization = camel_case
+
+# internal and private fields should be _camelCase
+dotnet_naming_rule.camel_case_for_private_internal_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_private_internal_fields.symbols  = private_internal_fields
+dotnet_naming_rule.camel_case_for_private_internal_fields.style    = camel_case_underscore_style
+dotnet_naming_symbols.private_internal_fields.applicable_kinds = field
+dotnet_naming_symbols.private_internal_fields.applicable_accessibilities = private, internal, protected_internal
+dotnet_naming_style.camel_case_underscore_style.required_prefix = _
+dotnet_naming_style.camel_case_underscore_style.capitalization = camel_case
+
+# protected fields should be p_camelCase
+dotnet_naming_rule.camel_case_for_private_protected_fields.severity = suggestion
+dotnet_naming_rule.camel_case_for_private_protected_fields.symbols  = private_protected_fields
+dotnet_naming_rule.camel_case_for_private_protected_fields.style    = camel_case_underscore_p_style
+dotnet_naming_symbols.private_protected_fields.applicable_kinds = field
+dotnet_naming_symbols.private_protected_fields.applicable_accessibilities = protected, private_protected
+dotnet_naming_style.camel_case_underscore_p_style.required_prefix = p_
+dotnet_naming_style.camel_case_underscore_p_style.capitalization = camel_case

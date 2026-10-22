@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bw7ms640e423v"]
 
-[ext_resource type="Script" uid="uid://c8xerktr0tasu" path="res://assets/scenes/character/progress_bar_2D_component.gd" id="1_x65g1"]
+[ext_resource type="Script" uid="uid://bexo33rmp7j08" path="res://assets/scenes/character/ProgressBar2DComponent.cs" id="1_jcm80"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lf3xv"]
 viewport_path = NodePath("SubViewport")
@@ -11,10 +11,10 @@ bg_color = Color(0.85486853, 0, 0.2230053, 1)
 [sub_resource type="Theme" id="Theme_gus75"]
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_x65g1")
 
-[node name="ProgressBarSprite2D" type="Sprite2D" unique_id=1456786095 node_paths=PackedStringArray("_progress_bar")]
+[node name="ProgressBarSprite2D" type="Sprite2D" unique_id=1456786095 node_paths=PackedStringArray("_progressBar")]
 texture = SubResource("ViewportTexture_lf3xv")
-script = ExtResource("1_x65g1")
-_progress_bar = NodePath("SubViewport/ProgressBar")
+script = ExtResource("1_jcm80")
+_progressBar = NodePath("SubViewport/ProgressBar")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=16833076]
 transparent_bg = true

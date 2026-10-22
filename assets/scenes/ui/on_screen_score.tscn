@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cgen6udgq8y2r"]
 
-[ext_resource type="Script" uid="uid://cxwtecjcocixy" path="res://assets/scenes/ui/on_screen_score.gd" id="1_g34us"]
+[ext_resource type="Script" uid="uid://y7707mm352ws" path="res://assets/scenes/ui/OnScreenScore.cs" id="1_g34us"]
 [ext_resource type="FontFile" uid="uid://c51d2baaavooi" path="res://addons/pixel_arial_11/PIXEARG_.TTF" id="2_a6g0s"]
 
 [sub_resource type="Theme" id="Theme_lf3xv"]
 default_font = ExtResource("2_a6g0s")
 default_font_size = 24
 
-[node name="OnScreenScore" type="Control" unique_id=1417802278 node_paths=PackedStringArray("_score_label")]
+[node name="OnScreenScore" type="Control" unique_id=1417802278 node_paths=PackedStringArray("_scoreLabel")]
 top_level = true
 z_index = 100
 z_as_relative = false
@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_g34us")
-_score_label = NodePath("ScoreLabel")
+_scoreLabel = NodePath("ScoreLabel")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=551233117]
 layout_mode = 1
